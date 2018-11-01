@@ -1,0 +1,16 @@
+import urllib.request
+from bs4 import BeautifulSoup
+
+adress = input('enter web site adress : ') 
+
+headers_codes = { --------------> your browser  user agent codes
+  'User-Agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+
+}
+
+request_1 = urllib.request.Request(adress,headers=headers_codes)
+html_1=urllib.request.urlopen(request_1)
+soup= BeautifulSoup(html_1,'html.parser')
+a =soup.find("div",attrs={"class":"price-wrapper"})
+b= soup.find("span",attrs={"class":"price"})
+b.text
